@@ -1,0 +1,78 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Menu from "../components/Menu.astro";
+import Card from "../components/Card.astro";
+
+const NUMERO_CARD = [1];
+---
+
+<Menu />
+<Layout title="Welcome to Astro.">
+  <main id="main">
+    <h1>hola soy nuevo en astro</h1>
+    <section class="primera">
+      {NUMERO_CARD.map((numero) => <Card numero={numero} />)}
+    </section>
+
+    <section class="segunda">
+      <div class="cuadro"></div>
+    </section>
+  </main>
+  <style>
+	main {
+		display: flex;
+		flex-direction:  column;
+        align-items: center;
+	}
+    .primera {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: start;
+      background-color: rgba(0, 0, 0, 0.169);
+      padding: 8px;
+      gap: 1rem;
+    }
+    .segunda {
+      background-color: rgba(0, 0, 0, 0.169);
+      width: 300px;
+      height: 120px;
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+	  border-radius: 10px 60px 60px 10px;
+    }
+    .cuadro {
+      background-color: blue;
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease-in;
+    }
+    .funcion {
+      background-color: black;
+	  border-radius: 50%;
+	  transform: translateX(180%);
+    }
+  </style>
+
+  <script>
+    function agregar() {
+      var elemento = document.querySelector(`.cuadro`);
+      elemento.classList.toggle("funcion");
+	  var main = document.querySelector(`main`);
+	  var segunda = document.querySelector(".segunda");
+
+	  if (elemento.classList.contains("funcion")){
+        main.style.backgroundColor = 'blue'
+	  } else {
+        main.style.backgroundColor = 'white'
+      }
+
+    }
+    var elemento = document.querySelector(`.cuadro`);
+    elemento.addEventListener(`click`, agregar);
+  </script>
+</Layout>

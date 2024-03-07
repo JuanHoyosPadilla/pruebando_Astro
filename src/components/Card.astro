@@ -1,0 +1,53 @@
+---
+const {numero} = Astro.props
+
+---
+<script>
+    function agrandar(){
+        var elementos = document.querySelectorAll("#contenido");
+        
+        elementos.forEach(function(elemento){
+            elemento.classList.toggle('prueba')
+        })
+        //elemento.classList.remove('prueba')
+    }
+    document.querySelector(".card").addEventListener('click',agrandar)
+    
+</script>
+<div id="contenido" class="card">
+    <p>Card numero : {numero}</p>
+</div>
+
+<style>
+    div{
+        width: 200px;
+        height: 200px;
+        background-color: black;
+        border-radius: 10px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: scale(1);
+        transform: rotate3d(1,1,1,0deg);
+        transition: all 0.3s;
+    }
+   
+
+    .prueba {
+        position: absolute;
+        background-color: red;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        top: 15px;
+        left: 95%;
+        right:0;
+        bottom: 0;
+        transform:  scale(1.8) ;
+        font-size: 2px;
+
+    }
+
+</style>
